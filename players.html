@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отбор – Bankers United</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Хедър -->
+
+  <header>
+    <h1>Bankers United</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <ul class="tab-menu" id="tab-menu">
+        <li><a class="nav_button" href="index.html">Начало</a></li>
+        <li><a class="nav_button" href="gallery.html">Галерия</a></li>
+        <li><a class="nav_button" href="players.html">Отбор</a></li>
+        <li><a class="nav_button" href="coaches.html">Треньорски щаб</a></li>
+        <li><a class="nav_button" href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+
+        <!-- Списък с футболисти -->
+    <div class="players-container">
+      <div class="player-card" data-player="1">
+        <img src="images/gervinho.jpg" alt="Иван Петров">
+        <h3>Иван Петров</h3>
+        <p>Нападател — #7</p>
+      </div>
+
+      <div class="player-card" data-player="2">
+        <img src="images/yayasanogo.jpg" alt="Георги Стоев">
+        <h3>Георги Стоев</h3>
+        <p>Полузащитник — #10</p>
+      </div>
+
+      <div class="player-card" data-player="3">
+        <img src="images/lansbery.jpg" alt="Играч 3">
+        <p>Страхил Стоев</p>
+        <span>#4 — Защитник</span>
+      </div>
+    </div>
+
+    <!-- Модален прозорец -->
+    <div id="player-modal" class="player-modal">
+      <div class="player-modal-content">
+        <span class="close-player-modal">&times;</span>
+        <img id="player-modal-img" src="" alt="">
+        <h2 id="player-modal-name"></h2>
+        <p id="player-modal-position"></p>
+        <p id="player-modal-info"></p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer>
+    <div class="footer-content">
+      <!-- <p><strong>Bankers United</strong></p> -->
+      <p>Стадион „Банка Арена“, София</p>
+      <p>Имейл: <a href="mailto:info@bankersunited.bg">info@bankersunited.bg</a></p>
+      <p>Телефон: +359 888 123 456</p>
+      <p>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:info@bankersunited.bg"><i class="fas fa-envelope"></i></a>
+      </p>
+      <p>© 2025 Bankers United</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
