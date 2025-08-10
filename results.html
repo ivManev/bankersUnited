@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Резултати от мачове на Bankers United - актуални резултати, предстоящи мачове и подробна статистика.">
+  <title>Резултати – Bankers United</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Хедър -->
+  <header>
+    <h1>Bankers United</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Отвори/затвори меню">☰</div>
+      <ul class="tab-menu" id="tab-menu">
+        <li><a class="nav_button" href="index.html">Начало</a></li>
+        <li><a class="nav_button" href="gallery.html">Галерия</a></li>
+        <li><a class="nav_button" href="players.html">Отбор</a></li>
+        <li><a class="nav_button" href="coaches.html">Треньорски щаб</a></li>
+        <li class="active"><a class="nav_button" href="results.html" aria-current="page">Резултати</a></li>
+        <li><a class="nav_button" href="statistics.html">Статистики</a></li>
+        <li><a class="nav_button" href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    <main>
+      <h2>Резултати и предстоящи мачове</h2>
+      <p>Следете резултатите от нашите мачове и предстоящите срещи</p>
+      
+      <!-- Филтри -->
+      <div class="results-filters">
+        <button class="filter-btn active" data-filter="all">Всички</button>
+        <button class="filter-btn" data-filter="finished">Изиграни</button>
+        <button class="filter-btn" data-filter="upcoming">Предстоящи</button>
+      </div>
+
+      <!-- Кратка статистика -->
+      <div class="team-summary" id="team-summary">
+        <div class="summary-card">
+          <i class="fas fa-trophy"></i>
+          <div class="summary-content">
+            <span class="summary-number" id="wins-count">-</span>
+            <span class="summary-label">Победи</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <i class="fas fa-handshake"></i>
+          <div class="summary-content">
+            <span class="summary-number" id="draws-count">-</span>
+            <span class="summary-label">Равенства</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <i class="fas fa-times"></i>
+          <div class="summary-content">
+            <span class="summary-number" id="losses-count">-</span>
+            <span class="summary-label">Загуби</span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <i class="fas fa-futbol"></i>
+          <div class="summary-content">
+            <span class="summary-number" id="goals-ratio">-</span>
+            <span class="summary-label">Голове</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Списък с мачове -->
+      <div class="matches-container" id="matches-container">
+        <div class="loading-spinner">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Зареждане на резултатите...</p>
+        </div>
+      </div>
+
+      <!-- Модален прозорец за детайли на мач -->
+      <div id="match-modal" class="match-modal">
+        <div class="match-modal-content">
+          <span class="close-match-modal">&times;</span>
+          <div class="match-header">
+            <div class="match-teams-detail">
+              <div class="team-detail home">
+                <span class="team-name" id="modal-home-team">-</span>
+                <span class="team-score" id="modal-home-score">-</span>
+              </div>
+              <div class="vs-detail">VS</div>
+              <div class="team-detail away">
+                <span class="team-score" id="modal-away-score">-</span>
+                <span class="team-name" id="modal-away-team">-</span>
+              </div>
+            </div>
+            <div class="match-info-detail">
+              <p><i class="fas fa-calendar"></i> <span id="modal-date">-</span></p>
+              <p><i class="fas fa-map-marker-alt"></i> <span id="modal-venue">-</span></p>
+              <p><i class="fas fa-trophy"></i> <span id="modal-competition">-</span></p>
+            </div>
+          </div>
+          
+          <div class="match-events" id="match-events">
+            <!-- Динамично съдържание -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>Стадион „Банка Арена", София</p>
+      <p>Имейл: <a href="mailto:info@bankersunited.bg">info@bankersunited.bg</a></p>
+      <p>Телефон: +359 888 123 456</p>
+      <p>
+        <a href="#" aria-label="Facebook страница"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram профил"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:info@bankersunited.bg" aria-label="Изпрати имейл"><i class="fas fa-envelope"></i></a>
+      </p>
+      <p>© 2025 Bankers United. Всички права запазени.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

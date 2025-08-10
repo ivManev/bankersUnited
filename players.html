@@ -10,62 +10,85 @@
 <body>
 
   <!-- Хедър -->
-
   <header>
     <h1>Bankers United</h1>
     <nav>
-      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Отвори/затвори меню">☰</div>
       <ul class="tab-menu" id="tab-menu">
         <li><a class="nav_button" href="index.html">Начало</a></li>
         <li><a class="nav_button" href="gallery.html">Галерия</a></li>
-        <li><a class="nav_button" href="players.html">Отбор</a></li>
+        <li class="active"><a class="nav_button" href="players.html" aria-current="page">Отбор</a></li>
         <li><a class="nav_button" href="coaches.html">Треньорски щаб</a></li>
+        <li><a class="nav_button" href="results.html">Резултати</a></li>
+        <li><a class="nav_button" href="statistics.html">Статистики</a></li>
         <li><a class="nav_button" href="contact.html">Контакти</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="wrapper">
+    <main>
+      <h2>Състав на отбора</h2>
+      
+      <!-- Списък с футболисти -->
+      <div class="players-container">
+        <div class="player-card" data-player="1">
+          <img src="images/players/small/gervinho1-150x150.jpg" 
+              srcset="images/players/small/gervinho1-150x150.jpg 150w,
+                      images/players/medium/gervinho1-200x200.jpg 200w,
+                      images/players/large/gervinho1-250x250.jpg 250w"
+              sizes="(max-width: 480px) 140px,
+                      (max-width: 768px) 180px,
+                      220px"
+              alt="Иван Петров"
+              loading="lazy"
+              class="player-image">
+          <h3>Иван Петров</h3>
+          <p>Нападател — #7</p>
+        </div>
 
-        <!-- Списък с футболисти -->
-    <div class="players-container">
-      <div class="player-card" data-player="1">
-        <img src="images/gervinho.jpg" alt="Иван Петров">
-        <h3>Иван Петров</h3>
-        <p>Нападател — #7</p>
+        <div class="player-card" data-player="2">
+          <img src="images/yayasanogo.jpg" alt="Георги Стоев">
+          <h3>Георги Стоев</h3>
+          <p>Полузащитник — #10</p>
+        </div>
+
+        <div class="player-card" data-player="3">
+          <img src="images/lansbery.jpg" alt="Страхил Стоев">
+          <h3>Страхил Стоев</h3>
+          <p>Защитник — #4</p>
+        </div>
+
+        <!-- Можеш да добавиш още играчи тук -->
+        <div class="player-card" data-player="4">
+          <img src="images/gervinho.jpg" alt="Мартин Иванов">
+          <h3>Мартин Иванов</h3>
+          <p>Вратар — #1</p>
+        </div>
+
+        <div class="player-card" data-player="5">
+          <img src="images/yayasanogo.jpg" alt="Петър Георгиев">
+          <h3>Петър Георгиев</h3>
+          <p>Защитник — #3</p>
+        </div>
       </div>
 
-      <div class="player-card" data-player="2">
-        <img src="images/yayasanogo.jpg" alt="Георги Стоев">
-        <h3>Георги Стоев</h3>
-        <p>Полузащитник — #10</p>
+      <!-- Модален прозорец -->
+      <div id="player-modal" class="player-modal">
+        <div class="player-modal-content">
+          <span class="close-player-modal">&times;</span>
+          <img id="player-modal-img" src="" alt="">
+          <h2 id="player-modal-name"></h2>
+          <p id="player-modal-position"></p>
+          <p id="player-modal-info"></p>
+        </div>
       </div>
-
-      <div class="player-card" data-player="3">
-        <img src="images/lansbery.jpg" alt="Играч 3">
-        <p>Страхил Стоев</p>
-        <span>#4 — Защитник</span>
-      </div>
-    </div>
-
-    <!-- Модален прозорец -->
-    <div id="player-modal" class="player-modal">
-      <div class="player-modal-content">
-        <span class="close-player-modal">&times;</span>
-        <img id="player-modal-img" src="" alt="">
-        <h2 id="player-modal-name"></h2>
-        <p id="player-modal-position"></p>
-        <p id="player-modal-info"></p>
-      </div>
-    </div>
-
+    </main>
   </div>
-
 
   <footer>
     <div class="footer-content">
-      <!-- <p><strong>Bankers United</strong></p> -->
-      <p>Стадион „Банка Арена“, София</p>
+      <p>Стадион „Банка Арена", София</p>
       <p>Имейл: <a href="mailto:info@bankersunited.bg">info@bankersunited.bg</a></p>
       <p>Телефон: +359 888 123 456</p>
       <p>

@@ -1,0 +1,192 @@
+{
+  "season": "2024-2025",
+  "matches": [
+    {
+      "id": 1,
+      "date": "2025-08-15",
+      "time": "19:00",
+      "opponent": "Левски София",
+      "homeTeam": "Bankers United",
+      "awayTeam": "Левски София",
+      "isHome": true,
+      "status": "finished",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "venue": "Стадион Банка Арена",
+      "competition": "Първа лига",
+      "goals": [
+        {
+          "playerId": 1,
+          "playerName": "Иван Петров",
+          "minute": 23,
+          "team": "home"
+        },
+        {
+          "playerId": 2,
+          "playerName": "Георги Стоев",
+          "minute": 67,
+          "team": "home"
+        },
+        {
+          "playerId": null,
+          "playerName": "Д. Митов",
+          "minute": 89,
+          "team": "away"
+        }
+      ],
+      "cards": [
+        {
+          "playerId": 3,
+          "playerName": "Страхил Стоев",
+          "minute": 45,
+          "type": "yellow",
+          "team": "home"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "date": "2025-08-22",
+      "time": "17:30",
+      "opponent": "ЦСКА София",
+      "homeTeam": "ЦСКА София",
+      "awayTeam": "Bankers United",
+      "isHome": false,
+      "status": "finished",
+      "result": {
+        "home": 1,
+        "away": 3
+      },
+      "venue": "Стадион Българска Армия",
+      "competition": "Първа лига",
+      "goals": [
+        {
+          "playerId": 1,
+          "playerName": "Иван Петров",
+          "minute": 15,
+          "team": "away"
+        },
+        {
+          "playerId": null,
+          "playerName": "М. Караджов",
+          "minute": 34,
+          "team": "home"
+        },
+        {
+          "playerId": 2,
+          "playerName": "Георги Стоев",
+          "minute": 72,
+          "team": "away"
+        },
+        {
+          "playerId": 5,
+          "playerName": "Петър Георгиев",
+          "minute": 85,
+          "team": "away"
+        }
+      ],
+      "cards": [
+        {
+          "playerId": 1,
+          "playerName": "Иван Петров",
+          "minute": 67,
+          "type": "yellow",
+          "team": "away"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "date": "2025-08-29",
+      "time": "20:00",
+      "opponent": "Ботев Пловдив",
+      "homeTeam": "Bankers United",
+      "awayTeam": "Ботев Пловдив",
+      "isHome": true,
+      "status": "finished",
+      "result": {
+        "home": 1,
+        "away": 1
+      },
+      "venue": "Стадион Банка Арена",
+      "competition": "Първа лига",
+      "goals": [
+        {
+          "playerId": 2,
+          "playerName": "Георги Стоев",
+          "minute": 56,
+          "team": "home"
+        },
+        {
+          "playerId": null,
+          "playerName": "А. Тодоров",
+          "minute": 78,
+          "team": "away"
+        }
+      ],
+      "cards": [
+        {
+          "playerId": 3,
+          "playerName": "Страхил Стоев",
+          "minute": 23,
+          "type": "yellow",
+          "team": "home"
+        },
+        {
+          "playerId": 4,
+          "playerName": "Мартин Иванов",
+          "minute": 90,
+          "type": "yellow",
+          "team": "home"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "date": "2025-09-05",
+      "time": "19:00",
+      "opponent": "Лудогорец",
+      "homeTeam": "Лудогорец",
+      "awayTeam": "Bankers United",
+      "isHome": false,
+      "status": "upcoming",
+      "result": null,
+      "venue": "Huvepharma Arena",
+      "competition": "Първа лига",
+      "goals": [],
+      "cards": []
+    },
+    {
+      "id": 5,
+      "date": "2025-09-12",
+      "time": "18:00",
+      "opponent": "Черно море",
+      "homeTeam": "Bankers United",
+      "awayTeam": "Черно море",
+      "isHome": true,
+      "status": "upcoming",
+      "result": null,
+      "venue": "Стадион Банка Арена",
+      "competition": "Първа лига",
+      "goals": [],
+      "cards": []
+    },
+    {
+      "id": 6,
+      "date": "2025-09-19",
+      "time": "20:30",
+      "opponent": "Славия София",
+      "homeTeam": "Славия София",
+      "awayTeam": "Bankers United",
+      "isHome": false,
+      "status": "upcoming",
+      "result": null,
+      "venue": "Стадион Славия",
+      "competition": "Първа лига",
+      "goals": [],
+      "cards": []
+    }
+  ]
+}

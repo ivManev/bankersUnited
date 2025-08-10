@@ -5,13 +5,24 @@
   --button-bg: #1580b3;
   --button-text: hsl(0, 0%, 97%);
   --button-hover: #004f77;
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
   color: #222;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh
 }
 
 header {
@@ -19,15 +30,18 @@ header {
   color: var(--white);
   padding: 0.8rem;
   text-align: center;
+  box-shadow: var(--shadow-medium);
 }
 
 header h1 {
   margin: 0;
   font-size: 2rem;
+  font-weight: 700;
 }
 
 nav {
   margin-top: 1rem;
+  position: relative;
 }
 
 .tab-menu {
@@ -37,326 +51,255 @@ nav {
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+  margin: 0;
 }
 
 .tab-menu li {
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   background-color: var(--white);
-  color: #005387;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  color: var(--main-blue);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border: 2px solid transparent;
+  position: relative;
 }
 
-.tab-menu li.active,
 .tab-menu li:hover {
   background-color: #cce0ef;
+  transform: translateY(-2px);
+  border-color: rgba(21, 128, 179, 0.3);
+}
+
+.tab-menu li.active {
+  background-color: #2a9bc7;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.tab-menu li.active:hover {
+  background-color: #65c6ed;
+}
+
+/* Хамбургер бутон - скрит по подразбиране на десктоп */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--white);
+  padding: 0.5rem;
+  position: absolute;
+  top: -70px;
+  right: 1rem;
+  z-index: 1001;
+}
+
+/* Подобрено центриране на wrapper и main */
+.wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
 }
 
 main {
-  max-width: 900px;
-  margin: 2rem auto;
+  width: 100%;
+  max-width: 1000px; /* Увеличена максимална ширина */
   background-color: var(--white);
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  margin: 0 auto; /* Допълнително центриране */
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
+/* Специално центриране за галерията */
+.gallery-container {
+  width: 100%;
+  max-width: 1200px; /* По-голяма ширина за галерията */
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  margin: 0 auto;
+  text-align: center;
 }
 
 .nav_button {
   color: var(--main-blue);
   border: none;
   padding: 0.1rem 0.5rem;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
+.nav_button:hover {
+  background-color: rgba(0, 83, 135, 0.1);
+}
+
+/* Форми */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+form label {
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
 input, textarea {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
   width: 100%;
   font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 3px rgba(21, 128, 179, 0.1);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 button {
   background-color: var(--button-bg);
   color: var(--button-text);
   border: none;
-  padding: 0.75rem;
-  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  align-self: flex-start;
 }
 
 button:hover {
   background-color: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 footer {
-  background-color: #005387;
+  background-color: var(--main-blue);
   color: white;
   text-align: center;
-  padding: 0.5rem 0.5rem;
-  margin-top: 3rem;
+  padding: 1.5rem 0.5rem;
+  margin-top: auto; /* Побутва footer към дъното */
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 footer a {
   color: #ffffff;
   text-decoration: underline;
   margin: 0 0.5rem;
+  transition: opacity 0.3s ease;
 }
 
 footer a:hover {
   text-decoration: none;
+  opacity: 0.8;
+}
+
+footer i {
+  font-size: 1.2rem;
+  margin: 0 0.3rem;
 }
 
 html, body {
   height: 100%;
   margin: 0;
-  display: flex;
-  flex-direction: column;
 }
 
-.wrapper {
-  flex: 1; /* Това избутва футъра надолу */
-  display: flex;
-  flex-direction: column;
+img {
+  height: auto;
+  max-width: 100%;
 }
 
-/* Адаптивност под 768px (таблети и телефони) */
-@media screen and (max-width: 768px) {
-  header h1 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: block;
-    text-align: right;
-  }
-
-  .tab-menu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0;
-    margin-top: 0.5rem;
-  }
-
-  .tab-menu li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .tab-menu.show {
-    display: flex;
-  }
-
-  .button {
-    width: 90%;
-    max-width: 300px;
-  }
-
-  footer {
-    font-size: 0.9rem;
-    padding: 1rem;
-  }
-
-  form input, form textarea {
-    width: 100% !important;
-  }
+.player-image, .coach-card img, .gallery-img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  transition: opacity 0.3s ease;
 }
 
-/* Адаптивност под 480px (мобилни телефони) */
-@media screen and (max-width: 480px) {
-  header h1 {
-    font-size: 1.2rem;
-  }
-
-  .tab-menu {
-    font-size: 0.95rem;
-  }
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
-/* Хамбургер бутон */
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #0073a8;
-  padding: 0.5rem 1rem;
+/* Изображението е заредено */
+.player-image.loaded, 
+.coach-card img.loaded, 
+.gallery-img.loaded {
+  background: none;
+  animation: none;
 }
 
-.gallery-container {
-  padding: 2rem;
-  text-align: center;
+/* Специфични размери */
+.player-card img {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
+.coach-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.gallery-img {
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+/* Галерия */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   padding: 1rem;
+  justify-items: center; /* Центрира елементите в grid-а */
 }
 
 .gallery img {
   width: 100%;
   cursor: pointer;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
+  height: 250px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   object-fit: cover;
 }
 
-.gallery-img:hover {
+.gallery img:hover {
   transform: scale(1.05);
-}
-
-/* Lightbox стилизация */
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  padding: 1rem;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #000;
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 50px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.players-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
-}
-
-.player-card {
-  width: 160px;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid #005387;
-  border-radius: 8px;
-  padding: 10px;
-  transition: transform 0.2s ease;
-  background-color: #f1f9ff;
-}
-
-.player-card:hover {
-  transform: scale(1.05);
-}
-
-.player-card img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.player-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
-}
-
-.player-modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-}
-
-.player-modal-content img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.close-player-modal {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-}
-
-
-.coach-card {
-  background: #e8f0fb;
-  border-radius: 12px;
-  text-align: center;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-  width: 100%;
-  max-width: 300px;
-  margin: 1rem auto;
-  box-sizing: border-box;
-}
-
-.coach-card:hover {
-  transform: translateY(-4px);
-}
-
-.coach-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 0.5rem;
-  border: 3px solid #005387;
+  box-shadow: var(--shadow-medium);
 }
 
 /* Модал за изображения */
@@ -368,7 +311,7 @@ html, body {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
 }
@@ -376,8 +319,8 @@ html, body {
 .modal-content {
   max-width: 90%;
   max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #000;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 /* Бутон за затваряне */
@@ -389,6 +332,11 @@ html, body {
   font-size: 36px;
   font-weight: bold;
   cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.close:hover {
+  opacity: 0.7;
 }
 
 /* Стрелки за навигация */
@@ -403,7 +351,7 @@ html, body {
   z-index: 1001;
   padding: 0 15px;
   opacity: 0.7;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
 }
 
 .arrow:hover {
@@ -418,3 +366,1647 @@ html, body {
   right: 10px;
 }
 
+/* Играчи */
+.players-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center; /* Центрира картите в grid-а */
+}
+
+.player-card {
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid var(--main-blue);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  transition: all 0.3s ease;
+  background-color: #f8fbff;
+  width: 100%;
+  max-width: 250px; /* Ограничава максималната ширина */
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--button-bg);
+}
+
+.player-card img {
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid var(--main-blue);
+}
+
+.player-card h3 {
+  margin: 10px 0 5px 0;
+  color: var(--main-blue);
+  font-size: 1.1rem;
+}
+
+.player-card p {
+  margin: 5px 0;
+  color: #666;
+  font-weight: 500;
+}
+
+.player-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.player-modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.player-modal-content img {
+  max-width: 200px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--main-blue);
+  margin-bottom: 15px;
+}
+
+.player-modal-content h2 {
+  color: var(--main-blue);
+  margin: 15px 0 10px 0;
+}
+
+.player-modal-content p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.close-player-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-player-modal:hover {
+  color: var(--main-blue);
+}
+
+/* Треньори */
+.coaches-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  justify-items: center; /* Центрира картите в grid-а */
+}
+
+.coach-card {
+  background: linear-gradient(135deg, #e8f0fb 0%, #f0f7ff 100%);
+  border-radius: var(--border-radius);
+  text-align: center;
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 350px;
+}
+
+.coach-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-medium);
+}
+
+.coach-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 4px solid var(--main-blue);
+}
+
+.coach-card h3 {
+  color: var(--main-blue);
+  margin: 15px 0 10px 0;
+  font-size: 1.3rem;
+}
+
+.coach-card p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.coach-position {
+  font-weight: 600;
+  color: var(--button-bg);
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.coach-experience {
+  font-style: italic;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.coach-description {
+  line-height: 1.6;
+  color: #555;
+  margin-top: 1rem;
+}
+
+/* Контактна форма */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef7ff 100%);
+  border-radius: var(--border-radius);
+  border: 1px solid #e0e9f0;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+}
+
+.contact-item i {
+  color: var(--main-blue);
+  font-size: 1.5rem;
+  margin-top: 0.2rem;
+  min-width: 30px;
+}
+
+.contact-item h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--main-blue);
+  font-size: 1.1rem;
+}
+
+.contact-item p {
+  margin: 0;
+  color: #555;
+}
+
+.contact-item a {
+  color: var(--button-bg);
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.required {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+  min-height: 1.2rem;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-note {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+}
+
+.success-message {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success-message i {
+  color: #28a745;
+  font-size: 1.2rem;
+}
+
+select {
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  width: 100%;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 3px rgba(21, 128, 179, 0.1);
+}
+
+button i {
+  margin-right: 0.5rem;
+}
+
+/* Начална страница */
+.hero-section {
+  text-align: center;
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+  justify-items: center; /* Центрира картите */
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #f8fbff 0%, #eef7ff 100%);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  border: 1px solid #e0e9f0;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px; /* Ограничава максималната ширина */
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--button-bg);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: var(--main-blue);
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: var(--main-blue);
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.feature-link {
+  display: inline-block;
+  background-color: var(--button-bg);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.feature-link:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.news-section {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, #fff 0%, #f8fbff 100%);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #e0e9f0;
+}
+
+.news-section h3 {
+  color: var(--main-blue);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--button-bg);
+  text-align: left; 
+}
+
+.news-date {
+  background: var(--main-blue);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.news-item p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+  text-align: left; /* Добавете това за да принудите ляво подравняване */
+  flex: 1; /* Това помага за правилно разпределение на пространството */
+}
+
+input.error, textarea.error, select.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Адаптивност за мобилни устройства */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  main, .gallery-container {
+    margin: 0;
+    padding: 1.5rem;
+    border-radius: 0;
+    max-width: none;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .tab-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    margin-top: 0.5rem;
+  }
+
+  .tab-menu li {
+    width: 90%;
+    text-align: center;
+  }
+
+  .tab-menu.show {
+    display: flex;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .players-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .coaches-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .arrow {
+    font-size: 36px;
+  }
+
+  .arrow.left {
+    left: 5px;
+  }
+
+  .arrow.right {
+    right: 5px;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 0.5rem 0.25rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .tab-menu {
+    font-size: 0.95rem;
+  }
+
+  main, .gallery-container {
+    padding: 1rem;
+  }
+
+  .player-modal-content,
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .arrow {
+    font-size: 28px;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .coach-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Резултати и мачове */
+.results-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--main-blue);
+  background: white;
+  color: var(--main-blue);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--main-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background-color: var(--main-blue);
+  color: white;
+  box-shadow: var(--shadow-medium);
+}
+
+/* Кратка статистика */
+.team-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef7ff 100%);
+  border-radius: var(--border-radius);
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.summary-card i {
+  font-size: 2rem;
+  color: var(--main-blue);
+  min-width: 40px;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--main-blue);
+  line-height: 1;
+}
+
+.summary-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* Контейнер за мачове */
+.matches-container {
+  margin: 2rem 0;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.loading-spinner i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--main-blue);
+}
+
+/* Карти за мачове */
+.match-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--main-blue);
+}
+
+.match-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.match-card.upcoming {
+  border-left-color: #28a745;
+}
+
+.match-card.finished {
+  border-left-color: var(--main-blue);
+}
+
+.match-card.live {
+  border-left-color: #dc3545;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { border-left-color: #dc3545; }
+  50% { border-left-color: #ff6b7a; }
+  100% { border-left-color: #dc3545; }
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.match-date {
+  font-weight: 600;
+  color: var(--main-blue);
+  font-size: 0.9rem;
+}
+
+.match-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.match-status.upcoming {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.match-status.finished {
+  background-color: #cce0ef;
+  color: var(--main-blue);
+}
+
+.match-status.live {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.match-teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.team {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-name {
+  font-weight: 600;
+  color: var(--main-blue);
+  font-size: 1.1rem;
+}
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--main-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.vs-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+
+.vs {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.score {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--main-blue);
+}
+
+.match-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.match-venue {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.match-venue i {
+  margin-right: 0.5rem;
+  color: var(--main-blue);
+}
+
+.match-details-btn {
+  padding: 0.5rem 1rem;
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.match-details-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+}
+
+/* Модален прозорец за мач */
+.match-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.match-modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.close-match-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-match-modal:hover {
+  color: var(--main-blue);
+}
+
+.match-teams-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.team-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-detail .team-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+.team-detail .team-score {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--main-blue);
+}
+
+.vs-detail {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 600;
+  margin: 0 1rem;
+}
+
+.match-info-detail {
+  background: #f8fbff;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+}
+
+.match-info-detail p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.match-info-detail i {
+  color: var(--main-blue);
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.match-events {
+  margin-top: 1.5rem;
+}
+
+.events-section {
+  margin-bottom: 1.5rem;
+}
+
+.events-section h4 {
+  color: var(--main-blue);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  border-bottom: 2px solid var(--main-blue);
+  padding-bottom: 0.5rem;
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background: #f8fbff;
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--main-blue);
+}
+
+.event-minute {
+  background: var(--main-blue);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  min-width: 35px;
+  text-align: center;
+}
+
+.event-icon {
+  font-size: 1.2rem;
+  width: 25px;
+  text-align: center;
+}
+
+.event-icon.goal {
+  color: #28a745;
+}
+
+.event-icon.yellow-card {
+  color: #ffc107;
+}
+
+.event-icon.red-card {
+  color: #dc3545;
+}
+
+.event-icon.substitution {
+  color: var(--main-blue);
+}
+
+.event-description {
+  flex: 1;
+  color: #555;
+}
+
+.event-player {
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+/* Адаптивност за мобилни устройства */
+@media screen and (max-width: 768px) {
+  .team-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .summary-card {
+    padding: 1rem;
+  }
+  
+  .summary-number {
+    font-size: 1.5rem;
+  }
+  
+  .match-teams {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .match-teams-detail {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .team-detail .team-score {
+    font-size: 2rem;
+  }
+  
+  .vs-detail {
+    transform: rotate(90deg);
+  }
+  
+  .match-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .results-filters {
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .team-summary {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .match-card {
+    padding: 1rem;
+  }
+  
+  .match-modal-content {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+  
+  .event-item {
+    padding: 0.5rem;
+    gap: 0.75rem;
+  }
+  
+  .event-minute {
+    min-width: 30px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Статистики на играчи */
+.stats-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef7ff 100%);
+  border-radius: var(--border-radius);
+  flex-wrap: wrap;
+}
+
+.stats-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-filter-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--main-blue);
+  background: white;
+  color: var(--main-blue);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.stat-filter-btn:hover {
+  background-color: var(--main-blue);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.stat-filter-btn.active {
+  background-color: var(--main-blue);
+  color: white;
+  box-shadow: var(--shadow-light);
+}
+
+.stats-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stats-sort label {
+  font-weight: 600;
+  color: var(--main-blue);
+  white-space: nowrap;
+}
+
+.stats-sort select {
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  background: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Top Performers секция */
+.top-performers {
+  margin: 2rem 0;
+}
+
+.top-performers h3 {
+  color: var(--main-blue);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.top-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.top-stat-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid #e0e9f0;
+  transition: all 0.3s ease;
+}
+
+.top-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.top-stat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--main-blue);
+  font-weight: 600;
+}
+
+.top-stat-header i {
+  font-size: 1.2rem;
+  width: 25px;
+  text-align: center;
+}
+
+.top-stat-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-player-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.top-player-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--main-blue);
+  flex-shrink: 0;
+}
+
+.top-player-details {
+  flex: 1;
+}
+
+.top-player-name {
+  font-weight: 600;
+  color: var(--main-blue);
+  margin-bottom: 0.25rem;
+}
+
+.top-player-position {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.top-stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--main-blue);
+  margin-left: auto;
+}
+
+.loading-placeholder {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Таблица със статистики */
+.stats-table-container {
+  margin: 2rem 0;
+}
+
+.stats-table-container h3 {
+  color: var(--main-blue);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.stats-table th {
+  background: var(--main-blue);
+  color: white;
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  position: relative;
+}
+
+.stats-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.stats-table th.sortable:hover {
+  background: var(--button-hover);
+}
+
+.sort-icon {
+  margin-left: 0.5rem;
+  opacity: 0.6;
+}
+
+.sort-icon::after {
+  content: '↕';
+  font-weight: normal;
+}
+
+.sort-icon.asc::after {
+  content: '↑';
+  opacity: 1;
+}
+
+.sort-icon.desc::after {
+  content: '↓';
+  opacity: 1;
+}
+
+.stats-table td {
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.stats-table tbody tr:hover {
+  background-color: #f8fbff;
+}
+
+.player-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.player-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--main-blue);
+  flex-shrink: 0;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name {
+  font-weight: 600;
+  color: var(--main-blue);
+  margin-bottom: 0.1rem;
+}
+
+.player-number {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+.cards-cell {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.card-count {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.card-count.yellow {
+  color: #ffc107;
+}
+
+.card-count.red {
+  color: #dc3545;
+}
+
+.form-indicators {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.form-match {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+}
+
+.form-match.win {
+  background-color: #28a745;
+}
+
+.form-match.draw {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.form-match.loss {
+  background-color: #dc3545;
+}
+
+.details-btn {
+  padding: 0.5rem 1rem;
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+}
+
+.loading-row {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--main-blue);
+}
+
+.loading-spinner i {
+  font-size: 1.5rem;
+}
+
+/* Модален прозорец за статистики */
+.stats-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.stats-modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.close-stats-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-stats-modal:hover {
+  color: var(--main-blue);
+}
+
+.player-stats-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #eee;
+}
+
+#modal-player-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--main-blue);
+}
+
+.player-info h2 {
+  margin: 0 0 0.5rem 0;
+  color: var(--main-blue);
+}
+
+.player-details {
+  display: flex;
+  gap: 1rem;
+  color: #666;
+}
+
+/* Табове в модала */
+.stats-tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 1.5rem;
+}
+
+.stats-tab-btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.stats-tab-btn.active {
+  color: var(--main-blue);
+  border-bottom-color: var(--main-blue);
+}
+
+.stats-tab-btn:hover {
+  color: var(--main-blue);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  background: #f8fbff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  border: 1px solid #e0e9f0;
+}
+
+.stat-item-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--main-blue);
+  margin-bottom: 0.5rem;
+}
+
+.stat-item-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.chart-placeholder {
+  background: #f8fbff;
+  border: 2px dashed #ccc;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.recent-matches {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recent-match {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8fbff;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--main-blue);
+}
+
+.match-opponent {
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+.match-rating {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--main-blue);
+}
+
+/* Адаптивност */
+@media screen and (max-width: 768px) {
+  .stats-controls {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .stats-filters {
+    justify-content: center;
+  }
+  
+  .stat-filter-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .top-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .top-stat-card {
+    padding: 1rem;
+  }
+  
+  .top-stat-value {
+    font-size: 1.2rem;
+  }
+  
+  .stats-table {
+    font-size: 0.8rem;
+  }
+  
+  .stats-table th,
+  .stats-table td {
+    padding: 0.5rem 0.4rem;
+  }
+  
+  .player-avatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .stats-modal-content {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+  
+  .player-stats-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .stats-tabs {
+    justify-content: center;
+  }
+  
+  .stats-tab-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .top-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-table th,
+  .stats-table td {
+    padding: 0.4rem 0.3rem;
+  }
+  
+  .form-indicators {
+    flex-wrap: wrap;
+  }
+  
+  .form-match {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6rem;
+  }
+}

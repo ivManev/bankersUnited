@@ -1,0 +1,144 @@
+{
+  "season": "2024-2025",
+  "lastUpdated": "2025-08-29",
+  "players": [
+    {
+      "id": 1,
+      "name": "Иван Петров",
+      "position": "Нападател",
+      "number": 7,
+      "photo": "images/players/medium/ivan-petrov.jpg",
+      "stats": {
+        "matches": 3,
+        "goals": 3,
+        "assists": 1,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 270,
+        "shotsOnTarget": 8,
+        "passAccuracy": 78.5,
+        "cleanSheets": 0,
+        "saves": 0,
+        "averageRating": 8.2
+      },
+      "recentForm": [
+        {"result": "W", "rating": 8.5},
+        {"result": "W", "rating": 8.7},
+        {"result": "D", "rating": 7.5}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Георги Стоев",
+      "position": "Полузащитник",
+      "number": 10,
+      "photo": "images/players/medium/georgi-stoev.jpg",
+      "stats": {
+        "matches": 3,
+        "goals": 3,
+        "assists": 2,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 270,
+        "shotsOnTarget": 6,
+        "passAccuracy": 85.2,
+        "cleanSheets": 0,
+        "saves": 0,
+        "averageRating": 8.5
+      },
+      "recentForm": [
+        {"result": "W", "rating": 8.0},
+        {"result": "W", "rating": 9.0},
+        {"result": "D", "rating": 8.5}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Страхил Стоев",
+      "position": "Защитник",
+      "number": 4,
+      "photo": "images/players/medium/strahil-stoev.jpg",
+      "stats": {
+        "matches": 3,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 2,
+        "redCards": 0,
+        "minutesPlayed": 270,
+        "shotsOnTarget": 1,
+        "passAccuracy": 92.1,
+        "cleanSheets": 1,
+        "saves": 0,
+        "averageRating": 7.2
+      },
+      "recentForm": [
+        {"result": "W", "rating": 7.5},
+        {"result": "W", "rating": 7.0},
+        {"result": "D", "rating": 7.0}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Мартин Иванов",
+      "position": "Вратар",
+      "number": 1,
+      "photo": "images/players/medium/martin-ivanov.jpg",
+      "stats": {
+        "matches": 3,
+        "goals": 0,
+        "assists": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 270,
+        "shotsOnTarget": 0,
+        "passAccuracy": 75.8,
+        "cleanSheets": 1,
+        "saves": 8,
+        "averageRating": 7.8
+      },
+      "recentForm": [
+        {"result": "W", "rating": 7.5},
+        {"result": "W", "rating": 8.5},
+        {"result": "D", "rating": 7.5}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Петър Георгиев",
+      "position": "Защитник",
+      "number": 3,
+      "photo": "images/players/medium/petar-georgiev.jpg",
+      "stats": {
+        "matches": 3,
+        "goals": 1,
+        "assists": 1,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 250,
+        "shotsOnTarget": 2,
+        "passAccuracy": 88.4,
+        "cleanSheets": 1,
+        "saves": 0,
+        "averageRating": 7.6
+      },
+      "recentForm": [
+        {"result": "W", "rating": 7.0},
+        {"result": "W", "rating": 8.5},
+        {"result": "D", "rating": 7.5}
+      ]
+    }
+  ],
+  "teamStats": {
+    "totalMatches": 3,
+    "wins": 2,
+    "draws": 1,
+    "losses": 0,
+    "goalsFor": 6,
+    "goalsAgainst": 3,
+    "cleanSheets": 1,
+    "winPercentage": 66.7,
+    "averageGoalsPerMatch": 2.0,
+    "homeRecord": {"wins": 1, "draws": 1, "losses": 0},
+    "awayRecord": {"wins": 1, "draws": 0, "losses": 0}
+  }
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Статистики на играчи от Bankers United - голове, асистенции, форма и подробен анализ на представянето.">
+  <title>Статистики – Bankers United</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Хедър -->
+  <header>
+    <h1>Bankers United</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Отвори/затвори меню">☰</div>
+      <ul class="tab-menu" id="tab-menu">
+        <li><a class="nav_button" href="index.html">Начало</a></li>
+        <li><a class="nav_button" href="gallery.html">Галерия</a></li>
+        <li><a class="nav_button" href="players.html">Отбор</a></li>
+        <li><a class="nav_button" href="coaches.html">Треньорски щаб</a></li>
+        <li><a class="nav_button" href="results.html">Резултати</a></li>
+        <li class="active"><a class="nav_button" href="statistics.html" aria-current="page">Статистики</a></li>
+        <li><a class="nav_button" href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    <main>
+      <h2>Статистики на играчи</h2>
+      <p>Подробни статистики и анализ на представянето на нашите играчи</p>
+      
+      <!-- Филтри и сортиране -->
+      <div class="stats-controls">
+        <div class="stats-filters">
+          <button class="stat-filter-btn active" data-position="all">Всички</button>
+          <button class="stat-filter-btn" data-position="Вратар">Вратари</button>
+          <button class="stat-filter-btn" data-position="Защитник">Защитници</button>
+          <button class="stat-filter-btn" data-position="Полузащитник">Полузащитници</button>
+          <button class="stat-filter-btn" data-position="Нападател">Нападатели</button>
+        </div>
+        
+        <div class="stats-sort">
+          <label for="sort-select">Сортиране по:</label>
+          <select id="sort-select">
+            <option value="goals">Голове</option>
+            <option value="assists">Асистенции</option>
+            <option value="matches">Мачове</option>
+            <option value="rating">Рейтинг</option>
+            <option value="name">Име</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Top Performers секция -->
+      <div class="top-performers">
+        <h3>Най-добри играчи</h3>
+        <div class="top-stats-grid">
+          <div class="top-stat-card">
+            <div class="top-stat-header">
+              <i class="fas fa-futbol"></i>
+              <span>Голмайстор</span>
+            </div>
+            <div class="top-stat-content" id="top-scorer">
+              <div class="loading-placeholder">Зареждане...</div>
+            </div>
+          </div>
+          
+          <div class="top-stat-card">
+            <div class="top-stat-header">
+              <i class="fas fa-hands-helping"></i>
+              <span>Асистент</span>
+            </div>
+            <div class="top-stat-content" id="top-assister">
+              <div class="loading-placeholder">Зареждане...</div>
+            </div>
+          </div>
+          
+          <div class="top-stat-card">
+            <div class="top-stat-header">
+              <i class="fas fa-star"></i>
+              <span>Най-висок рейтинг</span>
+            </div>
+            <div class="top-stat-content" id="top-rated">
+              <div class="loading-placeholder">Зареждане...</div>
+            </div>
+          </div>
+          
+          <div class="top-stat-card">
+            <div class="top-stat-header">
+              <i class="fas fa-shield-alt"></i>
+              <span>Чисти мрежи</span>
+            </div>
+            <div class="top-stat-content" id="top-clean-sheets">
+              <div class="loading-placeholder">Зареждане...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Таблица със статистики -->
+      <div class="stats-table-container">
+        <h3>Подробни статистики</h3>
+        <div class="table-wrapper">
+          <table class="stats-table" id="stats-table">
+            <thead>
+              <tr>
+                <th class="sortable" data-column="name">
+                  <i class="fas fa-user"></i> Играч
+                  <span class="sort-icon"></span>
+                </th>
+                <th class="sortable" data-column="position">
+                  Позиция
+                  <span class="sort-icon"></span>
+                </th>
+                <th class="sortable" data-column="matches">
+                  <i class="fas fa-calendar"></i> Мачове
+                  <span class="sort-icon"></span>
+                </th>
+                <th class="sortable" data-column="goals">
+                  <i class="fas fa-futbol"></i> Голове
+                  <span class="sort-icon"></span>
+                </th>
+                <th class="sortable" data-column="assists">
+                  <i class="fas fa-hands-helping"></i> Асистенции
+                  <span class="sort-icon"></span>
+                </th>
+                <th class="sortable" data-column="rating">
+                  <i class="fas fa-star"></i> Рейтинг
+                  <span class="sort-icon"></span>
+                </th>
+                <th class="sortable" data-column="cards">
+                  <i class="fas fa-square"></i> Картони
+                  <span class="sort-icon"></span>
+                </th>
+                <th>Форма</th>
+                <th>Детайли</th>
+              </tr>
+            </thead>
+            <tbody id="stats-table-body">
+              <tr>
+                <td colspan="9" class="loading-row">
+                  <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Зареждане на статистики...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Модален прозорец за детайли на играч -->
+      <div id="player-stats-modal" class="stats-modal">
+        <div class="stats-modal-content">
+          <span class="close-stats-modal">&times;</span>
+          
+          <div class="player-stats-header">
+            <img id="modal-player-photo" src="" alt="">
+            <div class="player-info">
+              <h2 id="modal-player-name">-</h2>
+              <div class="player-details">
+                <span id="modal-player-position">-</span>
+                <span id="modal-player-number">-</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-tabs">
+            <button class="stats-tab-btn active" data-tab="overview">Общо</button>
+            <button class="stats-tab-btn" data-tab="performance">Представяне</button>
+            <button class="stats-tab-btn" data-tab="form">Форма</button>
+          </div>
+
+          <div class="stats-tab-content">
+            <div id="overview-tab" class="tab-panel active">
+              <div class="stats-grid" id="modal-stats-grid">
+                <!-- Динамично съдържание -->
+              </div>
+            </div>
+            
+            <div id="performance-tab" class="tab-panel">
+              <div class="performance-charts">
+                <div class="chart-container">
+                  <h4>Голове по мачове</h4>
+                  <div class="chart-placeholder" id="goals-chart">
+                    <p>Графика ще бъде добавена в следваща версия</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="form-tab" class="tab-panel">
+              <div class="form-analysis">
+                <h4>Последни 5 мача</h4>
+                <div class="recent-matches" id="modal-recent-matches">
+                  <!-- Динамично съдържание -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>Стадион „Банка Арена", София</p>
+      <p>Имейл: <a href="mailto:info@bankersunited.bg">info@bankersunited.bg</a></p>
+      <p>Телефон: +359 888 123 456</p>
+      <p>
+        <a href="#" aria-label="Facebook страница"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram профил"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:info@bankersunited.bg" aria-label="Изпрати имейл"><i class="fas fa-envelope"></i></a>
+      </p>
+      <p>© 2025 Bankers United. Всички права запазени.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

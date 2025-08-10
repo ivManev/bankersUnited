@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Свържете се с Bankers United - футболен отбор от София. Контактна форма, адрес и телефон за връзка.">
   <title>Контакти – Bankers United</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -10,7 +11,6 @@
 <body>
 
   <!-- Хедър -->
-
   <header>
     <h1>Bankers United</h1>
     <nav>
@@ -20,38 +20,117 @@
         <li><a class="nav_button" href="gallery.html">Галерия</a></li>
         <li><a class="nav_button" href="players.html">Отбор</a></li>
         <li><a class="nav_button" href="coaches.html">Треньорски щаб</a></li>
-        <li><a class="nav_button" href="contact.html">Контакти</a></li>
+        <li><a class="nav_button" href="results.html">Резултати</a></li>
+        <li><a class="nav_button" href="statistics.html">Статистики</a></li>
+        <li class="active"><a class="nav_button" href="contact.html" aria-current="page">Контакти</a></li>
       </ul>
     </nav>
   </header>
+
   <div class="wrapper">
     <main>
       <h2>Свържете се с нас</h2>
-      <form>
-        <label>Име: <input type="text" name="name" required /></label>
-        <label>Имейл: <input type="email" name="email" required /></label>
-        <label>Съобщение:
-          <textarea name="message" required></textarea>
-        </label>
-        <button type="submit">Изпрати</button>
-      </form>
+      <p>Имате въпроси за отбора, искате да се присъедините или просто искате да споделите мнението си? Пишете ни!</p>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h3>Адрес</h3>
+            <p>Стадион „Банка Арена", София</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h3>Телефон</h3>
+            <p>+359 888 123 456</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h3>Имейл</h3>
+            <p><a href="mailto:info@bankersunited.bg">info@bankersunited.bg</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- В contact.html - заменете <form> секцията с това: -->
+
+  <form id="contact-form" action="https://formspree.io/f/mqalgoye" method="POST">
+    <!-- Скрито поле за subject -->
+    <input type="hidden" name="_subject" value="Ново съобщение от сайта на Bankers United">
+    <!-- Anti-spam защита -->
+    <input type="hidden" name="_gotcha" style="display:none">
+    
+    <label for="name">
+      Име <span class="required">*</span>
+      <input type="text" id="name" name="name" required aria-describedby="name-error" />
+      <span class="error-message" id="name-error"></span>
+    </label>
+    
+    <label for="email">
+      Имейл <span class="required">*</span>
+      <input type="email" id="email" name="_replyto" required aria-describedby="email-error" />
+      <span class="error-message" id="email-error"></span>
+    </label>
+    
+    <label for="phone">
+      Телефон
+      <input type="tel" id="phone" name="phone" />
+    </label>
+    
+    <label for="subject">
+      Тема
+      <select id="subject" name="subject_category">
+        <option value="">Изберете тема</option>
+        <option value="Общ въпрос">Общ въпрос</option>
+        <option value="Присъединяване към отбора">Искам да се присъединя към отбора</option>
+        <option value="Спонсорство">Спонсорство</option>
+        <option value="Медии и пресцентър">Медии и пресцентър</option>
+        <option value="Друго">Друго</option>
+      </select>
+    </label>
+    
+    <label for="message">
+      Съобщение <span class="required">*</span>
+      <textarea id="message" name="message" required aria-describedby="message-error" placeholder="Напишете вашето съобщение тук..."></textarea>
+      <span class="error-message" id="message-error"></span>
+    </label>
+    
+    <div class="form-footer">
+      <p class="form-note">Полетата, означени с <span class="required">*</span> са задължителни</p>
+      <button type="submit">
+        <i class="fas fa-paper-plane"></i>
+        Изпрати съобщението
+      </button>
+    </div>
+  </form>
+      
+      <div id="form-success" class="success-message" style="display: none;">
+        <i class="fas fa-check-circle"></i>
+        <p>Благодарим ви! Съобщението е изпратено успешно. Ще се свържем с вас в най-скоро време.</p>
+      </div>
     </main>
   </div>  
 
   <footer>
     <div class="footer-content">
-      <!-- <p><strong>Bankers United</strong></p> -->
-      <p>Стадион „Банка Арена“, София</p>
+      <p>Стадион „Банка Арена", София</p>
       <p>Имейл: <a href="mailto:info@bankersunited.bg">info@bankersunited.bg</a></p>
       <p>Телефон: +359 888 123 456</p>
       <p>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:info@bankersunited.bg"><i class="fas fa-envelope"></i></a>
+        <a href="#" aria-label="Facebook страница"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram профил"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:info@bankersunited.bg" aria-label="Изпрати имейл"><i class="fas fa-envelope"></i></a>
       </p>
-      <p>© 2025 Bankers United</p>
+      <p>© 2025 Bankers United. Всички права запазени.</p>
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
